@@ -3,13 +3,13 @@ import re
 import numpy as np
 from scipy.io import wavfile
 
-# --- НАСТРОЙКИ (ПРОПИШИ СВОЁ) ---
+
 SOURCE_DIR = "data_chirp_without_str"       # Папка, где лежат wav-файлы чирпа по углам
 OUTPUT_FILE = "average_4_data_without_str.txt"  # Итоговый текстовый файл с данными
 
 F_MIN = 3999.0
 F_MAX = 4001.0
-# --------------------------------
+
 
 def extract_angle(filename):
     """Ищет угол в названии файла."""
@@ -43,7 +43,7 @@ def get_chirp_energy(filepath, f_min, f_max):
         pos_idx = np.where(frequencies >= 0)[0]
         frequencies = frequencies[pos_idx]
         
-        # ВАЖНО: берем просто модуль спектра (амплитуду) БЕЗ деления на len_fft!
+        # Берем просто модуль спектра (амплитуду) БЕЗ деления на len_fft!
         amplitudes = np.abs(fft_data[pos_idx]) * 2
 
         # Вырезаем наш диапазон частот
